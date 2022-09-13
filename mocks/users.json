@@ -1,0 +1,147 @@
+[
+    {
+        "id": "1942c8e0-3bca-463b-831e-9851489e81ed",
+        "name": "Thor Haubert",
+        "email": "haubertthor@gmail.com",
+        "password": "senhadothor",
+        "country": "Brazil",
+        "picture": "/mockImages/users/thor.jpg",
+        "watchedMovies":[
+            {
+                "id": "e1f79c82-9539-4401-a767-eb0be373292a",
+                "timesWatched": 3
+            },
+            {
+                "id": "d41c2f55-85c6-4364-91c7-2571ad51296a",
+                "timesWatched": 4
+            },
+            {
+                "id": "4a2db5ed-4008-4acf-94e9-11a2ba01ead2",
+                "timesWatched": 2
+            }
+        ]
+    },
+    {
+        "id": "7d3206f8-3c3e-41c8-ab8a-a6f3838cfbba",
+        "name": "Ednaldo Pereira",
+        "email": "ednaldopereira@gmail.com",
+        "password": "senhadoednaldo",
+        "country": "Brazil",
+        "picture": "/mockImages/users/ednaldopereira.jpg",
+        "watchedMovies":[
+            {
+                "id": "77ea3a32-cea0-422b-bda7-ec4336941630",
+                "timesWatched": 2
+            },
+            {
+                "id": "9aba2ed4-fb7c-42b1-b794-3ebbde21ad75",
+                "timesWatched": 1
+            }
+        ]
+    },
+    {
+        "id": "5039eed0-ac4b-41c7-ab7b-197d844f5b1f",
+        "name": "Manuel Gomes",
+        "email": "manuelgomes@gmail.com",
+        "password": "senhadomanuel",
+        "country": "Brazil",
+        "picture": "/mockImages/users/manoelgomes.jpg",
+        "watchedMovies":[
+            {
+                "id": "802c186d-a839-4e16-ba3a-1a73e3d7bafb",
+                "timesWatched": 2
+            }
+        ]
+    },
+    {
+        "id": "94d06d36-1e0c-4abd-bfc8-13fa1edaf460",
+        "name": "Tiringa",
+        "email": "tiringa@gmail.com",
+        "password": "senhadotiringa",
+        "country": "Brazil",
+        "picture": "/mockImages/users/tiringa.jpeg",
+        "watchedMovies":[
+            {
+                "id": "f62fa517-f7a4-4165-88dc-28b5f6ab5366",
+                "timesWatched": 1
+            }
+        ]
+    },
+    {
+        "id": "065f579a-c2c0-47c8-ac60-8768be9ccdb3",
+        "name": "Arthur Morgan",
+        "email": "arthurmorgan@gmail.com",
+        "password": "senhadoarthur",
+        "country": "USA",
+        "picture": "/mockImages/users/arthurmorgan.jpg",
+        "watchedMovies":[
+            {
+                "id": "6dc7e485-9633-4655-a892-4f384e727da1",
+                "timesWatched": 2
+            },
+            {
+                "id": "e4112b81-8be5-43b5-9213-a6ef5c150a94",
+                "timesWatched": 1
+            }
+        ]
+    },
+    {
+        "id": "39d12ccd-a94e-4e69-b20f-641e32a5b3b2",
+        "name": "Dutch van der Linde",
+        "email": "dutchvanderlinde@gmail.com",
+        "password": "senhadodutch",
+        "country": "USA",
+        "picture": "/mockImages/users/dutchvanderlinde.jpg",
+        "watchedMovies":[
+            {
+                "id":"3eae218b-0198-4a59-822c-c23375d3a998",
+                "timesWatched": 3
+            },
+            {
+                "id":"5eff06a2-38a9-4743-a1c1-89dcb1863662",
+                "timesWatched": 1
+            }
+        ]
+    },
+    {
+        "id": "21bbfbf3-bcf1-42a1-ac3e-969bf3e94a9b",
+        "name": "George Kusunoki Miller",
+        "email": "georgemiller@gmail.com",
+        "password": "senhadogeorge",
+        "country": "USA",
+        "picture": "/mockImages/users/georgemiller.jpg",
+        "watchedMovies":[
+            {
+                "id": "afbee059-7fb8-49a8-9540-18fc2678db3b",
+                "timesWatched": 2
+            },
+            {
+                "id": "77ea3a32-cea0-422b-bda7-ec4336941630",
+                "timesWatched": 1
+            }
+        ]
+    },
+    {
+        "id": "c6ef3f33-5008-4999-81db-0e1137223f7d",
+        "name": "Ryan Gosling",
+        "email": "ryangosling@gmail.com",
+        "password": "senhadoryan",
+        "country": "USA",
+        "picture": "/mockImages/users/ryangosling.jpg",
+        "watchedMovies":[
+            {
+                "id": "48c9296-ec97-466b-bc49-49fcf96cbc4b",
+                "timesWatched": 1
+            },
+            {
+                "id": "eeff6d04-44f7-4756-b77b-b99f18b5a246",
+                "timesWatched": 1
+            },
+            {
+                "id": "28c9aaeb-2b62-4438-b89b-db2017a0e943",
+                "timesWatched": 1
+            }
+        ]
+    }
+
+]

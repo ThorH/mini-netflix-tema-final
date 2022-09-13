@@ -1,0 +1,137 @@
+[
+    {
+        "id": "e1f79c82-9539-4401-a767-eb0be373292a",
+        "title": "Senhor dos anéis: A sociedade do anel",
+        "picture": "/mockImages/movies/senhordosaneisasociedadedoanel.jpg",
+        "category": "Fantasy",
+        "timesWatched": 258,
+        "durationPerSecond": 10680,
+        "linkEmbed": "https://www.youtube.com/embed/0i86oM1nHjM"
+    },
+    {
+        "id": "28c9aaeb-2b62-4438-b89b-db2017a0e943",
+        "title": "Senhor dos anéis: As duas torres",
+        "picture": "/mockImages/movies/senhordosaneisasduastorres.jpeg",
+        "category": "Fantasy",
+        "timesWatched": 230,
+        "durationPerSecond": 10740,
+        "linkEmbed": "https://www.youtube.com/embed/hYcw5ksV8YQ"
+    },
+    {
+        "id": "eeff6d04-44f7-4756-b77b-b99f18b5a246",
+        "title": "O Hobbit: Uma jornada inesperada",
+        "picture": "/mockImages/movies/ohobbitumajornadainesperada.jpg",
+        "category": "Fantasy",
+        "timesWatched": 200,
+        "durationPerSecond": 10920,
+        "linkEmbed": "https://www.youtube.com/embed/4AKkpnCKa2I"
+    },
+    {
+        "id": "148c9296-ec97-466b-bc49-49fcf96cbc4b",
+        "title": "Harry Potter e a câmara secreta",
+        "picture": "/mockImages/movies/harrypottereacamarasecreta.jpg",
+        "category": "Fantasy",
+        "timesWatched": 211,
+        "durationPerSecond": 9660,
+        "linkEmbed": "https://www.youtube.com/embed/7ZBh_-Aa0Bk"
+    },
+    {
+        "id": "d41c2f55-85c6-4364-91c7-2571ad51296a",
+        "title": "Harry Potter e o prisioneiro de azkaban",
+        "picture": "/mockImages/movies/harrypottereoprisioneirodeazkaban.jpg",
+        "category": "Fantasy",
+        "timesWatched": 223,
+        "durationPerSecond": 8520,
+        "linkEmbed": "https://www.youtube.com/embed/V_JtCbmkPA0"
+    },
+    {
+        "id": "802c186d-a839-4e16-ba3a-1a73e3d7bafb",
+        "title": "Corra!",
+        "picture": "/mockImages/movies/corra.jpg",
+        "category": "Horror",
+        "timesWatched": 150,
+        "durationPerSecond": 6130,
+        "linkEmbed": "https://www.youtube.com/embed/mDGV5UucTu8"
+    },
+    {
+        "id": "9aba2ed4-fb7c-42b1-b794-3ebbde21ad75",
+        "title": "O Homem Invisivel",
+        "picture": "/mockImages/movies/ohomeminvisivel.jpeg",
+        "category": "Horror",
+        "timesWatched": 120,
+        "durationPerSecond": 7440,
+        "linkEmbed": "https://www.youtube.com/embed/L91CO7wOqVw"
+    },
+    {
+        "id": "3eae218b-0198-4a59-822c-c23375d3a998",
+        "title": "It a coisa",
+        "picture": "/mockImages/movies/itacoisa.jpeg",
+        "category": "Horror",
+        "timesWatched": 175,
+        "durationPerSecond": 8100,
+        "linkEmbed": "https://www.youtube.com/embed/dD264ZjfKlk"
+    },
+    {
+        "id": "5eff06a2-38a9-4743-a1c1-89dcb1863662",
+        "title": "Um lugar silencioso",
+        "picture": "/mockImages/movies/umlugarsilencioso.jpg",
+        "category": "Horror",
+        "timesWatched": 164,
+        "durationPerSecond": 5400,
+        "linkEmbed": "https://www.youtube.com/embed/8W6iMmhVDgE"
+    },
+    {
+        "id": "f62fa517-f7a4-4165-88dc-28b5f6ab5366",
+        "title": "Um lugar silencioso Parte 2",
+        "picture": "/mockImages/movies/umlugarsilenciosoparte2.jpg",
+        "category": "Horror",
+        "timesWatched": 157,
+        "durationPerSecond": 5820,
+        "linkEmbed": "https://www.youtube.com/embed/tJt2MS53cdM"
+    },
+    {
+        "id": "afbee059-7fb8-49a8-9540-18fc2678db3b",
+        "title": "Star Wars: Episódio IV - Uma Nova Esperança",
+        "picture": "/mockImages/movies/starwarsiv.jpeg",
+        "category": "Sci-fi",
+        "timesWatched": 247,
+        "durationPerSecond": 7260,
+        "linkEmbed": "https://www.youtube.com/embed/Q8b09bE1iGQ"
+    },
+    {
+        "id": "4a2db5ed-4008-4acf-94e9-11a2ba01ead2",
+        "title": "Star Wars: Episódio VI - O Retorno de Jedi",
+        "picture": "/mockImages/movies/starwarsvi.jpeg",
+        "category": "Sci-fi",
+        "timesWatched": 241,
+        "durationPerSecond": 8040,
+        "linkEmbed": "https://www.youtube.com/embed/1GjZ0m_mKmM"
+    },
+    {
+        "id": "6dc7e485-9633-4655-a892-4f384e727da1",
+        "title": "Rogue One",
+        "picture": "/mockImages/movies/rogueone.jpeg",
+        "category": "Sci-fi",
+        "timesWatched": 211,
+        "durationPerSecond": 7980,
+        "linkEmbed": "https://www.youtube.com/embed/frdj1zb9sMY"
+    },
+    {
+        "id": "77ea3a32-cea0-422b-bda7-ec4336941630",
+        "title": "Dune",
+        "picture": "/mockImages/movies/dune.jpg",
+        "category": "Sci-fi",
+        "timesWatched": 185,
+        "durationPerSecond": 9300,
+        "linkEmbed": "https://www.youtube.com/embed/dnBpZuSUISQ"
+    },
+    {
+        "id": "e4112b81-8be5-43b5-9213-a6ef5c150a94",
+        "title": "Alien Covenant",
+        "picture": "/mockImages/movies/aliencovenant.jpeg",
+        "category": "Sci-fi",
+        "timesWatched": 148,
+        "durationPerSecond": 7380,
+        "linkEmbed": "https://www.youtube.com/embed/5incfB5jHWU"
+    }
+]
