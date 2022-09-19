@@ -20,54 +20,58 @@ function Metrics() {
     const { movies, updateMovies } = useMovie()
     const navigate = useNavigate()
 
-    let lastFiveMovies: WatchedMovie[] = []
+    //let userLastFiveMovies: WatchedMovie[] = []
+    const lastWatchedMovies: Movie[] = []
 
-    if (userLogged) lastFiveMovies = userLogged.watchedMovies.slice(0, 5)
+    const userLastFiveMovies = userLogged?.watchedMovies.slice(0, 5)
 
-    const lastWatchedMovies = lastFiveMovies?.map((lastWatchedMovie) => movies.find(movie => movie.id === lastWatchedMovie.id))
+    //const lastWatchedMoviesFind = userLastFiveMovies.map((lastWatchedMovie) => movies.find(movie => movie.id == lastWatchedMovie.id))
+
+    userLastFiveMovies?.forEach(WatchedMovie => {
+        const foundMovie = movies.find(movie => movie.id == WatchedMovie.id)
+
+        if (foundMovie) lastWatchedMovies.push(foundMovie)
+    })
 
     const descendingOrder = (movieLower: Movie, movieHigher: Movie) => movieHigher.timesWatched - movieLower.timesWatched
 
-    let topUsers = users.sort((userLower, userHigher) =>
-        userHigher.watchedMovies.reduce((previousValue, currentMovie) => previousValue + currentMovie.timesWatched, 0)
-        -
-        userLower.watchedMovies.reduce((previousValue, currentMovie) => previousValue + currentMovie.timesWatched, 0)
-    )
-    topUsers = topUsers.slice(0, 3)
+    const topFiveCategories = (category: string) => {
+        let moviesCategory = movies.filter(movie => movie.category === category)
+        moviesCategory.sort(descendingOrder)
+        moviesCategory = moviesCategory.slice(0, 5)
 
-    let moviesFantasy = movies.filter(movie => movie.category === "Fantasy")
-    moviesFantasy.sort(descendingOrder)
-    moviesFantasy = moviesFantasy.slice(0, 5)
+        return moviesCategory
+    }
 
-    let moviesHorror = movies.filter(movie => movie.category === "Horror")
-    moviesHorror.sort(descendingOrder)
-    moviesHorror = moviesHorror.slice(0, 5)
+    const moviesFantasy = topFiveCategories("Fantasy")
 
-    let moviesScifi = movies.filter(movie => movie.category === "Sci-fi")
-    moviesScifi.sort(descendingOrder)
-    moviesScifi = moviesScifi.slice(0, 5)
+    const moviesHorror = topFiveCategories("Horror")
 
-    const PlayMovie = (idMovie: string) => {
+    const moviesScifi = topFiveCategories("Sci-fi")
+
+    const playMovie = (idMovie: string) => {
         if (!userLogged) return
 
         let updatedWatchedMovies: WatchedMovie[]
         let updatedUserLogged: User
+        const movieIndex = userLogged.watchedMovies.findIndex(movie => movie.id === idMovie)
 
-        if (userLogged.watchedMovies.some(movie => movie.id === idMovie)) {
-            updatedWatchedMovies = userLogged.watchedMovies.map(watchedMovie => watchedMovie.id === idMovie ? { ...watchedMovie, timesWatched: watchedMovie.timesWatched + 1 } : watchedMovie)
-            updatedUserLogged = { ...userLogged, watchedMovies: updatedWatchedMovies }
-            updateUserLogged(updatedUserLogged)
+        if (movieIndex >= 0) {
+            const movieWatched = userLogged.watchedMovies[movieIndex]
+            movieWatched.timesWatched++
+
+            updatedWatchedMovies = userLogged.watchedMovies.filter(movie => movie.id !== idMovie)
+            updatedWatchedMovies.unshift(movieWatched)
         } else {
             updatedWatchedMovies = [{ id: idMovie, timesWatched: 1 }, ...userLogged.watchedMovies]
-            updatedUserLogged = { ...userLogged, watchedMovies: updatedWatchedMovies }
-            updateUserLogged(updatedUserLogged)
         }
 
+        updatedUserLogged = { ...userLogged, watchedMovies: updatedWatchedMovies }
+        updateUserLogged(updatedUserLogged)
         localStorage.setItem('userLogged', JSON.stringify(updatedUserLogged))
 
         const updatedUsers = users.map(user => user.id === userLogged.id ? userLogged : user)
         updateUsers(updatedUsers)
-
         localStorage.setItem('users', JSON.stringify(updatedUsers))
 
 
@@ -79,6 +83,11 @@ function Metrics() {
     }
 
     const metricsList: Metric[] = [
+        {
+            id: uuidv4(),
+            title: "Last watched movies",
+            movies: lastWatchedMovies
+        },
         {
             id: uuidv4(),
             title: "Fantasy",
@@ -95,6 +104,14 @@ function Metrics() {
             movies: moviesScifi
         }
     ]
+
+    let topUsers = users.sort((userLower, userHigher) =>
+        userHigher.watchedMovies.reduce((previousValue, currentMovie) => previousValue + currentMovie.timesWatched, 0)
+        -
+        userLower.watchedMovies.reduce((previousValue, currentMovie) => previousValue + currentMovie.timesWatched, 0)
+    )
+    topUsers = topUsers.slice(0, 3)
+
     return (
         <MetricsContainer>
             <MetricContainer>
@@ -108,36 +125,24 @@ function Metrics() {
                     )}
                 </UsersContainer>
             </MetricContainer>
-            {lastWatchedMovies.length &&
-                <MetricContainer>
-                    <h3>Last watched movies</h3>
-                    <MoviesContainer>
-                        {lastWatchedMovies.map((movie, index) =>
-                            <MovieContainer
-                                key={index}
-                                onClick={() => { if (movie) PlayMovie(movie.id) }}
-                            >
-                                <img src={movie?.picture} alt={`${movie?.title} picture`} />
-                                <p>{movie?.title}</p>
-                            </MovieContainer>
-                        )}
-                    </MoviesContainer>
-                </MetricContainer>
-            }
             {metricsList.map(metric =>
                 <MetricContainer key={metric.id}>
-                    <h3>{metric.title}</h3>
-                    <MoviesContainer>
-                        {metric.movies.map(movie =>
-                            <MovieContainer
-                                key={movie.id}
-                                onClick={() => PlayMovie(movie.id)}
-                            >
-                                <img src={movie.picture} alt={`${movie.title} picture`} />
-                                <p>{movie.title}</p>
-                            </MovieContainer>
-                        )}
-                    </MoviesContainer>
+                    {metric.movies.length &&
+                        <>
+                            <h3>{metric.title}</h3>
+                            <MoviesContainer>
+                                {metric.movies.map(movie =>
+                                    <MovieContainer
+                                        key={movie.id}
+                                        onClick={() => playMovie(movie.id)}
+                                    >
+                                        <img src={movie.picture} alt={`${movie.title} picture`} />
+                                        <p>{movie.title}</p>
+                                    </MovieContainer>
+                                )}
+                            </MoviesContainer>
+                        </>
+                    }
                 </MetricContainer>
             )}
         </MetricsContainer>
