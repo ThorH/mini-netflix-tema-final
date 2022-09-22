@@ -17,7 +17,7 @@ import User from "../../interfaces/User"
 
 function Metrics() {
     const { userLogged, users, updateUserLogged, updateUsers } = useUser()
-    const { movies, updateMovies } = useMovie()
+    const { movies, updateMovies, countriesWatchedMovies, updateCountriesWatchedMovies } = useMovie()
     const navigate = useNavigate()
 
     //let userLastFiveMovies: WatchedMovie[] = []
@@ -27,30 +27,108 @@ function Metrics() {
 
     //const lastWatchedMoviesFind = userLastFiveMovies.map((lastWatchedMovie) => movies.find(movie => movie.id == lastWatchedMovie.id))
 
-    userLastFiveMovies?.forEach(WatchedMovie => {
-        const foundMovie = movies.find(movie => movie.id == WatchedMovie.id)
+    userLastFiveMovies?.forEach(watchedMovie => {
+        const foundMovie = movies.find(movie => movie.id == watchedMovie.id)
 
         if (foundMovie) lastWatchedMovies.push(foundMovie)
     })
 
-    const descendingOrder = (movieLower: Movie, movieHigher: Movie) => movieHigher.timesWatched - movieLower.timesWatched
-
     const topFiveCategories = (category: string) => {
         let moviesCategory = movies.filter(movie => movie.category === category)
-        moviesCategory.sort(descendingOrder)
+        moviesCategory.sort((movieLower, movieHigher) => movieHigher.timesWatched - movieLower.timesWatched)
         moviesCategory = moviesCategory.slice(0, 5)
 
         return moviesCategory
     }
 
     const moviesFantasy = topFiveCategories("Fantasy")
-
     const moviesHorror = topFiveCategories("Horror")
-
     const moviesScifi = topFiveCategories("Sci-fi")
+
+    const topCountry = (country: string) => {
+        const topCountryMovies: Movie[] = []
+        let countryWatchedMovies = countriesWatchedMovies.find(countryWatchedMovie => countryWatchedMovie.country === country)
+        countryWatchedMovies?.watchedMovies.sort((watchedMovieLower, watchedMovieHigher) => watchedMovieHigher.timesWatched - watchedMovieLower.timesWatched)
+        const topFiveWatchedMovies = countryWatchedMovies?.watchedMovies.slice(0, 5)
+
+        topFiveWatchedMovies?.forEach(watchedMovie => {
+            const foundMovie = movies.find(movie => movie.id == watchedMovie.id)
+
+            if (foundMovie) topCountryMovies.push(foundMovie)
+        })
+
+        return topCountryMovies
+    }
+
+    const topBrazilMovies = topCountry("Brazil")
+    const topUSAMovies = topCountry("USA")
+
+    const metricsList: Metric[] = [
+        {
+            id: uuidv4(),
+            title: "Last watched movies",
+            movies: lastWatchedMovies
+        },
+        {
+            id: uuidv4(),
+            title: "Top movies watched in Brazil",
+            movies: topBrazilMovies
+        },
+        {
+            id: uuidv4(),
+            title: "Top movies watched in USA",
+            movies: topUSAMovies
+        },
+        {
+            id: uuidv4(),
+            title: "Fantasy",
+            movies: moviesFantasy
+        },
+        {
+            id: uuidv4(),
+            title: "Horror",
+            movies: moviesHorror
+        },
+        {
+            id: uuidv4(),
+            title: "Sci-fi",
+            movies: moviesScifi
+        }
+    ]
+
+    let topUsers = users.sort((userLower, userHigher) =>
+        userHigher.watchedMovies.reduce((previousValue, currentMovie) => previousValue + currentMovie.timesWatched, 0)
+        -
+        userLower.watchedMovies.reduce((previousValue, currentMovie) => previousValue + currentMovie.timesWatched, 0)
+    )
+    topUsers = topUsers.slice(0, 3)
 
     const playMovie = (idMovie: string) => {
         if (!userLogged) return
+
+        const foundCountryWatchedMovies = countriesWatchedMovies.find(countryWatchedMovie => countryWatchedMovie.country === userLogged.country)
+
+        if (foundCountryWatchedMovies) {
+            let updatedCountryWatchedMovies = foundCountryWatchedMovies
+
+            if (updatedCountryWatchedMovies.watchedMovies.some(watchedMovie => watchedMovie.id === idMovie)) {
+                updatedCountryWatchedMovies = {
+                    ...updatedCountryWatchedMovies,
+                    watchedMovies: updatedCountryWatchedMovies.watchedMovies.map(watchedMovie =>
+                        watchedMovie.id === idMovie ?
+                            { ...watchedMovie, timesWatched: watchedMovie.timesWatched + 1 } :
+                            watchedMovie
+                    )
+                }
+            } else {
+                updatedCountryWatchedMovies = { ...updatedCountryWatchedMovies, watchedMovies: [...updatedCountryWatchedMovies.watchedMovies, { id: idMovie, timesWatched: 1 }] }
+            }
+
+            const updatedCountriesWatchedMovies = countriesWatchedMovies.map(countryWatchedMovies => countryWatchedMovies.country === userLogged.country ? updatedCountryWatchedMovies : countryWatchedMovies)
+            updateCountriesWatchedMovies(updatedCountriesWatchedMovies)
+            console.log(updatedCountriesWatchedMovies)
+            localStorage.setItem('countriesWatchedMovies', JSON.stringify(updatedCountriesWatchedMovies))
+        }
 
         let updatedWatchedMovies: WatchedMovie[]
         let updatedUserLogged: User
@@ -81,36 +159,6 @@ function Metrics() {
 
         navigate(`/play/${idMovie}`)
     }
-
-    const metricsList: Metric[] = [
-        {
-            id: uuidv4(),
-            title: "Last watched movies",
-            movies: lastWatchedMovies
-        },
-        {
-            id: uuidv4(),
-            title: "Fantasy",
-            movies: moviesFantasy
-        },
-        {
-            id: uuidv4(),
-            title: "Horror",
-            movies: moviesHorror
-        },
-        {
-            id: uuidv4(),
-            title: "Sci-fi",
-            movies: moviesScifi
-        }
-    ]
-
-    let topUsers = users.sort((userLower, userHigher) =>
-        userHigher.watchedMovies.reduce((previousValue, currentMovie) => previousValue + currentMovie.timesWatched, 0)
-        -
-        userLower.watchedMovies.reduce((previousValue, currentMovie) => previousValue + currentMovie.timesWatched, 0)
-    )
-    topUsers = topUsers.slice(0, 3)
 
     return (
         <MetricsContainer>
