@@ -5,16 +5,17 @@ import {
 } from "./MainMovieSelectionStyle"
 import { useUser } from "../../hooks/useUser"
 import { useMovie } from "../../hooks/useMovie"
-import { getMoviesStorage } from "../../services/storage"
+import { getCountriesWatchedMovies, getMoviesStorage } from "../../services/storage"
 import { Link } from "react-router-dom"
 import Metrics from "../../components/Metrics/Metrics"
 
 function MainMovieSelection() {
     const { userLogged, updateUserLogged } = useUser()
-    const { updateMovies } = useMovie()
+    const { updateMovies, updateCountriesWatchedMovies } = useMovie()
 
     useEffect(() => {
         updateMovies(getMoviesStorage())
+        updateCountriesWatchedMovies(getCountriesWatchedMovies())
     }, [])
 
     const logout = () => {

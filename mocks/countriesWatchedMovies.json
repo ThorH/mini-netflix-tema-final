@@ -1,0 +1,77 @@
+[
+    {
+        "country": "Brazil",
+        "watchedMovies": [
+            {
+                "id": "e1f79c82-9539-4401-a767-eb0be373292a",
+                "timesWatched": 3
+            },
+            {
+                "id": "d41c2f55-85c6-4364-91c7-2571ad51296a",
+                "timesWatched": 4
+            },
+            {
+                "id": "4a2db5ed-4008-4acf-94e9-11a2ba01ead2",
+                "timesWatched": 2
+            },
+            {
+                "id": "77ea3a32-cea0-422b-bda7-ec4336941630",
+                "timesWatched": 2
+            },
+            {
+                "id": "9aba2ed4-fb7c-42b1-b794-3ebbde21ad75",
+                "timesWatched": 1
+            },
+            {
+                "id": "802c186d-a839-4e16-ba3a-1a73e3d7bafb",
+                "timesWatched": 2
+            },
+            {
+                "id": "f62fa517-f7a4-4165-88dc-28b5f6ab5366",
+                "timesWatched": 1
+            }
+
+        ]
+    },
+    {
+        "country": "USA",
+        "watchedMovies": [
+            {
+                "id": "6dc7e485-9633-4655-a892-4f384e727da1",
+                "timesWatched": 2
+            },
+            {
+                "id": "e4112b81-8be5-43b5-9213-a6ef5c150a94",
+                "timesWatched": 1
+            },
+            {
+                "id":"3eae218b-0198-4a59-822c-c23375d3a998",
+                "timesWatched": 3
+            },
+            {
+                "id": "5eff06a2-38a9-4743-a1c1-89dcb1863662",
+                "timesWatched": 1
+            },
+            {
+                "id": "afbee059-7fb8-49a8-9540-18fc2678db3b",
+                "timesWatched": 2
+            },
+            {
+                "id": "77ea3a32-cea0-422b-bda7-ec4336941630",
+                "timesWatched": 1
+            },
+            {
+                "id": "48c9296-ec97-466b-bc49-49fcf96cbc4b",
+                "timesWatched": 1
+            },
+            {
+                "id": "eeff6d04-44f7-4756-b77b-b99f18b5a246",
+                "timesWatched": 1
+            },
+            {
+                "id": "28c9aaeb-2b62-4438-b89b-db2017a0e943",
+                "timesWatched": 1
+            }
+        ]
+    }
+]
