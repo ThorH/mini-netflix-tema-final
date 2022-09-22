@@ -4,7 +4,7 @@ describe('empty spec', () => {
     cy.visit('/')
   })
 
-  it('Should login account', () => {
+  it('Should login and logout account', () => {
     const inputEmail = cy.get('[data-test-target="inputEmail"]').should('have.attr', 'placeholder', 'Email')
     const inputPassword = cy.get('[data-test-target="inputPassword"]').should('have.attr', 'placeholder', 'Password')
     const loginButton = cy.get('button')
@@ -18,27 +18,37 @@ describe('empty spec', () => {
 
     cy.get('h2').contains('Thor Haubert')
 
-  }),
+    cy.get('a').click()
 
-    it('Should login and logout account', () => {
-      const inputEmail = cy.get('[data-test-target="inputEmail"]').should('have.attr', 'placeholder', 'Email')
-      const inputPassword = cy.get('[data-test-target="inputPassword"]').should('have.attr', 'placeholder', 'Password')
-      const loginButton = cy.get('button')
+    cy.get('[data-test-target="logout"]').click()
 
-      inputEmail.type('haubertthor@gmail.com')
-      inputPassword.type('senhadothor')
-      loginButton.click()
+    cy.get('[data-test-target="loginContainer"]')
 
-      const profileLink = cy.get('[data-test-target="profileLink"]')
-      profileLink.click()
+  })
 
-      cy.get('h2').contains('Thor Haubert')
+  it('Should give error when the email is invalid', () => {
+    const inputEmail = cy.get('[data-test-target="inputEmail"]').should('have.attr', 'placeholder', 'Email')
+    const inputPassword = cy.get('[data-test-target="inputPassword"]').should('have.attr', 'placeholder', 'Password')
+    const loginButton = cy.get('button')
 
-      cy.get('a').click()
+    inputEmail.type('haubertthorinvalid@gmail.com')
+    inputPassword.type('senhadothor')
+    loginButton.click()
 
-      cy.get('[data-test-target="logout"]').click()
+    cy.get('p').contains("Sorry, we couldn't find an account with that email address. Try again.")
 
-      cy.get('[data-test-target="loginContainer"]')
+  })
 
-    })
+  it('Should give error when the password is invalid', () => {
+    const inputEmail = cy.get('[data-test-target="inputEmail"]').should('have.attr', 'placeholder', 'Email')
+    const inputPassword = cy.get('[data-test-target="inputPassword"]').should('have.attr', 'placeholder', 'Password')
+    const loginButton = cy.get('button')
+
+    inputEmail.type('haubertthor@gmail.com')
+    inputPassword.type('senhadothorinvalid')
+    loginButton.click()
+
+    cy.get('p').contains("Invalid password. Try again.")
+
+  })
 })
