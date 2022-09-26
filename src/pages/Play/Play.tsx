@@ -18,8 +18,6 @@ function Play() {
         setMovie(selectedMovie)
     }, [])
 
-
-
     return (
 
         <PlayContainer>
@@ -29,13 +27,14 @@ function Play() {
                 </Link>
             </BackToHomeContainer>
             {movie &&
-                <iframe width="900"
-                    height="500"
+                <iframe width="900px"
+                    height="500px"
                     src={movie.linkEmbed}
+                    title={`${movie.title} - Trailer`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    title={`${movie.title} - Trailer`} />
+                />
             }
         </PlayContainer>
     )

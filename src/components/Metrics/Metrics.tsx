@@ -162,7 +162,7 @@ function Metrics() {
 
     return (
         <MetricsContainer>
-            <MetricContainer>
+            <MetricContainer data-test-target="metricContainer">
                 <h3>Top users</h3>
                 <UsersContainer>
                     {topUsers.map(user =>
@@ -174,7 +174,7 @@ function Metrics() {
                 </UsersContainer>
             </MetricContainer>
             {metricsList.map(metric =>
-                <MetricContainer key={metric.id}>
+                <MetricContainer key={metric.id} data-test-target="metricContainer">
                     {metric.movies.length &&
                         <>
                             <h3>{metric.title}</h3>
@@ -183,6 +183,7 @@ function Metrics() {
                                     <MovieContainer
                                         key={movie.id}
                                         onClick={() => playMovie(movie.id)}
+                                        data-test-target="movieContainer"
                                     >
                                         <img src={movie.picture} alt={`${movie.title} picture`} />
                                         <p>{movie.title}</p>

@@ -1,4 +1,4 @@
-describe('empty spec', () => {
+describe('Login E2E tests', () => {
 
   beforeEach(() => {
     cy.visit('/')
