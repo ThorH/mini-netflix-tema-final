@@ -18,7 +18,7 @@ const initialValue: UserContextType = {
     updateUserLogged: () => { }
 }
 
-const UserContext = createContext<UserContextType>(initialValue);
+export const UserContext = createContext<UserContextType>(initialValue);
 
 export const UserProvider = ({ children }: Props) => {
     const [users, setUsers] = useState<User[]>([])
