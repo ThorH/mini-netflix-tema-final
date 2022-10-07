@@ -1,23 +1,21 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Login from './Login';
-import { UserContext, UserProvider } from '../../hooks/useUser';
-import { getUsersStorage } from '../../services/storage';
+import { UserContext } from '../../hooks/useUser';
+import { mockUserLogged } from '../../test/testMocks'
 
 describe('Login component test', () => {
 
     const mockValue = {
-        users: getUsersStorage(),
+        users: [mockUserLogged],
         updateUsers: () => { },
         updateUserLogged: () => { }
     }
 
     beforeEach(() => {
         render(
-            <UserProvider >
-                <UserContext.Provider value={mockValue}>
-                    <Login />
-                </UserContext.Provider>
-            </UserProvider>
+            <UserContext.Provider value={mockValue}>
+                <Login />
+            </UserContext.Provider>
         )
     })
 
