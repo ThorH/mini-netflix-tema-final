@@ -20,7 +20,7 @@ const initialValue: MovieContextType = {
     updateCountriesWatchedMovies: () => { }
 }
 
-const MovieContext = createContext<MovieContextType>(initialValue);
+export const MovieContext = createContext<MovieContextType>(initialValue);
 
 export const MovieProvider = ({ children }: Props) => {
     const [movies, setMovies] = useState<Movie[]>([])
