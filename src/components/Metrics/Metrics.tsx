@@ -126,7 +126,6 @@ function Metrics() {
 
             const updatedCountriesWatchedMovies = countriesWatchedMovies.map(countryWatchedMovies => countryWatchedMovies.country === userLogged.country ? updatedCountryWatchedMovies : countryWatchedMovies)
             updateCountriesWatchedMovies(updatedCountriesWatchedMovies)
-            console.log(updatedCountriesWatchedMovies)
             localStorage.setItem('countriesWatchedMovies', JSON.stringify(updatedCountriesWatchedMovies))
         }
 
@@ -162,7 +161,7 @@ function Metrics() {
 
     return (
         <MetricsContainer>
-            <MetricContainer data-test-target="metricContainer">
+            <MetricContainer data-testid="metricContainer">
                 <h3>Top users</h3>
                 <UsersContainer>
                     {topUsers.map(user =>
@@ -174,7 +173,7 @@ function Metrics() {
                 </UsersContainer>
             </MetricContainer>
             {metricsList.map(metric =>
-                <MetricContainer key={metric.id} data-test-target="metricContainer">
+                <MetricContainer key={metric.id} data-testid="metricContainer">
                     {metric.movies.length &&
                         <>
                             <h3>{metric.title}</h3>
@@ -183,7 +182,7 @@ function Metrics() {
                                     <MovieContainer
                                         key={movie.id}
                                         onClick={() => playMovie(movie.id)}
-                                        data-test-target="movieContainer"
+                                        data-testid="movieContainer"
                                     >
                                         <img src={movie.picture} alt={`${movie.title} picture`} />
                                         <p>{movie.title}</p>

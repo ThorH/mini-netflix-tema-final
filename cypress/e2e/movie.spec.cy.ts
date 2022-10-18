@@ -13,20 +13,20 @@ describe('Movies E2E tests', () => {
 
     it('Should movie go to last watched when play', () => {
 
-        cy.get('[data-test-target="metricContainer"]:contains(Last watched movies)')
+        cy.get('[data-testid="metricContainer"]:contains(Last watched movies)')
             .children('div')
             .children('div')
             .first()
             .should('not.contain', 'Senhor dos anéis: As duas torres')
 
-        cy.get('[data-test-target="movieContainer"]:contains(Senhor dos anéis: As duas torres)')
+        cy.get('[data-testid="movieContainer"]:contains(Senhor dos anéis: As duas torres)')
             .first()
             .click()
 
         cy.get('iframe').should('be.visible')
         cy.get('a').click()
 
-        cy.get('[data-test-target="metricContainer"]:contains(Last watched movies)')
+        cy.get('[data-testid="metricContainer"]:contains(Last watched movies)')
             .children('div')
             .children('div')
             .first()
