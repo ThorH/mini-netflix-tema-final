@@ -1,14 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { UserContext } from "../../hooks/useUser";
-import { mockUserLogged } from "../../test/testMocks";
+import { mockUser } from "../../test/testMocks";
 import { BrowserRouter } from "react-router-dom";
 import Profile from "../Profile/Profile";
 
 describe('Profile page component test', () => {
 
     const mockUserValue = {
-        users: [mockUserLogged],
-        userLogged: mockUserLogged,
+        users: [mockUser],
+        userLogged: mockUser,
         updateUsers: () => { },
         updateUserLogged: () => { }
     }

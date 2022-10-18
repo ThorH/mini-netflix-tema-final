@@ -1,12 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Login from './Login';
 import { UserContext } from '../../hooks/useUser';
-import { mockUserLogged } from '../../test/testMocks'
+import { mockUser } from '../../test/testMocks'
 
 describe('Login component test', () => {
 
     const mockValue = {
-        users: [mockUserLogged],
+        users: [mockUser],
         updateUsers: () => { },
         updateUserLogged: () => { }
     }

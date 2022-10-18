@@ -1,14 +1,14 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { UserContext, useUser } from "../../hooks/useUser";
-import { mockUserLogged } from "../../test/testMocks";
+import { mockUser } from "../../test/testMocks";
 import MainMovieSelection from "./MainMovieSelection";
 import { BrowserRouter } from "react-router-dom";
 
 describe('MainMovieSelection component test', () => {
 
     const mockUserValue = {
-        users: [mockUserLogged],
-        userLogged: mockUserLogged,
+        users: [mockUser],
+        userLogged: mockUser,
         updateUsers: () => { },
         updateUserLogged: () => { }
     }
