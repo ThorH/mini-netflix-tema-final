@@ -10,7 +10,7 @@ function Profile() {
     const { userLogged } = useUser()
 
     return (
-        <ProfileContainer>
+        <ProfileContainer data-testid="profileContainer">
             <BackToHomeContainer>
                 <Link to="/">
                     <BiArrowBack size={30} color="#ffffff" />

@@ -19,8 +19,7 @@ function Play() {
     }, [])
 
     return (
-
-        <PlayContainer>
+        <PlayContainer data-testid="playContainer">
             <BackToHomeContainer>
                 <Link to="/">
                     <BiArrowBack size={30} color="#ffffff" />

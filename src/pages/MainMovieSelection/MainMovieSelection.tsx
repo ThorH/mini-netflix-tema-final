@@ -24,7 +24,7 @@ function MainMovieSelection() {
     }
 
     return (
-        <MainMovieSelectionContainer>
+        <MainMovieSelectionContainer data-testid="mainMovieSelectionContainer">
             <UserLoggedContainer>
                 <Link
                     data-test-target="profileLink"
